@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Browse by Size</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+
+    </head>
+
+    <body>
+        <div class="site-wrap">
+
+            <!-- Modal -->
+            <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="dogDetailsModal" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title"><strong id="dogDetailsModal">Dog Name</strong></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body px-2">
+                            <table class="table table-responsive d-none d-lg-block">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img class="dg-img" src="#" alt="#" id="dg-image">
+                                        </td>
+                                        <td colspan="3" class="ps-5">
+                                            <!-- Table for large screens -->
+                                            <table class="table table-borderless">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Height: </th>
+                                                        <td id="dg-height"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Weight: </th>
+                                                        <td id="dg-weight"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Colors: </th>
+                                                        <td id="dg-color"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Hair Type: </th>
+                                                        <td id="dg-hair"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Personality: </th>
+                                                        <td id="dg-desc"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Special Needs: </th>
+                                                        <td id="dg-special"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Origin Country: </th>
+                                                        <td id="dg-origin"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Ideal Location: </th>
+                                                        <td id="dg-loc"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Life Expectancy: </th>
+                                                        <td id="dg-life"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- Table for small screens -->
+                            <table class="table table-responsive d-lg-none">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <img class="dg-img" src="#" alt="#" id="dg-image-small">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <table class="table table-borderless">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Height: </th>
+                                                        <td id="dg-height-small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Weight: </th>
+                                                        <td id="dg-weight-small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Colors: </th>
+                                                        <td id="dg-color-small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Hair Type: </th>
+                                                        <td id="dg-hair-small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Personality: </th>
+                                                        <td id="dg-desc-small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Special Needs: </th>
+                                                        <td id="dg-special-small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Origin Country: </th>
+                                                        <td id="dg-origin-small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Ideal Location: </th>
+                                                        <td id="dg-loc-small"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Life Expectancy: </th>
+                                                        <td id="dg-life-small"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <header>
+                <div id="overlap">
+                    <nav class="navbar navbar-expand-md navbar-light">
+                        <div class="container-fluid">
+
+                            <a class="navbar-brand" href="home.html"> <!--Navbar Brand-->
+                                <img src="ppp-logo.png" class="img-fluid" alt="Patrona's Puppy Paradise Logo" id="logo">
+                            </a>
+
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="home.html">Home</a>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Browse
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="browse-origin.html">Browse by Origin</a></li>
+                                        <li><a class="dropdown-item active" href="browse-size.html">Browse by Size</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="browse-all.html">Browse All</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="gallery.html">Gallery</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="about.html">About</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <main class="py-3">
+                <div class="container-fluid">
+                    <div class="row">
+                    <!-- Left/Top Ads -->
+                        <div class="col-lg-2" style="text-align: center;">
+                            <div id="l-ads-vert" class="d-none d-lg-block me-3">
+                                <img src="Ads/vertical_1.jpg" alt="ADVERTISEMENT" class="vert-ads">
+                            </div>
+                            <div id="l-ads-horz" class="d-lg-none">
+                                <img src="Ads/c_pollux_banner_dog-01-958x236.jpg" alt="ADVERTISEMENT" class="horz-ads">
+                            </div>
+                        </div>
+
+                        <!-- Size List -->
+                        <div class="col-lg-5 px-5">
+                            <div class="size-list py-3 mx-5">
+                                <div>
+                                    <h3>Miniscule Dogs</h3>
+                                    <ul>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="chihuahua_v02b" data-bs-height="6 to 9&quot; / 15.24 to 22.86 cm" data-bs-weight="2 to 6 lbs / 0.09 to 2.72 kg" data-bs-colors="Any" data-bs-hair="Long or short" data-bs-desc="Bold, sensitive, and adaptable" data-bs-special="Needs regular grooming, must stay indoors in moderate temperatures" data-bs-origin="Mexico" data-bs-loc="Indoors" data-bs-life="12-14 yrs" data-size="sz1">
+                                                Chihuahua
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Tiny Dogs</h3>
+                                    <ul>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="affenpinscher_v04" data-bs-height="9 to 12&quot; / 22.86 to 30.48 cm" data-bs-weight="6 to 9 lbs / 2.72 to 4.08 kg" data-bs-colors="Shades of black, grey, silver, and red" data-bs-hair="Wiry, dense, and harsh" data-bs-desc="Lively, curious, and stubborn" data-bs-special="Brush several times a week, positive firm consistent training, intolerant to teasing" data-bs-origin="Germany" data-bs-loc="City or country, apartments" data-bs-life="14-15 yrs" data-size="sz2">
+                                                Affenpinscher
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="cairn_terrier_v04" data-bs-height="9.5 to 12&quot; / 24.13 to 30.48 cm" data-bs-weight="13 to 16 lbs / 5.89 to 7.24 kg" data-bs-colors="Shades of red, cream, or black" data-bs-hair="Double coated; shaggy, profuse uppercoat, and a furry undercoat" data-bs-desc="Energetic, courageous, and attention-seeking" data-bs-special="Needs weekly grooming" data-bs-origin="Great Britain" data-bs-loc="Any" data-bs-life="14 yrs" data-size="sz2">
+                                                Cairn Terrier
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Small Dogs</h3>
+                                    <ul>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="cocker_spaniel_buddy" data-bs-height="14 to 15&quot; / 35.56 to 38.1 cm" data-bs-weight="24 to 28 lbs / 10.8 to 12.7 kg" data-bs-colors="Shades of black or cream" data-bs-hair="Long, dense, and silky" data-bs-desc="Gentle, obedient, eager-to-please" data-bs-special="Needs regular brushing, susceptible to health problems" data-bs-origin="USA" data-bs-loc="Any" data-bs-life="13-14 yrs" data-size="sz3">
+                                                American Cocker Spaniel
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="basset_hound_v02" data-bs-height="13 to 15&quot; / 33.02 to 38.1 cm" data-bs-weight="40 to 65 lbs / 18.14 to 29.5 kg" data-bs-colors="Any" data-bs-hair="Short, hard, and smooth" data-bs-desc="Docile, curious, and stubborn" data-bs-special="Needs exercise often, prone to becoming overweight, clean ears and apply eye drops frequently" data-bs-origin="France" data-bs-loc="City or country" data-bs-life="12 yrs" data-size="sz3">
+                                                Basset Hound
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="bichon_frise_v03" data-bs-height="9 to 12&quot; / 22.86 to 30.48 cm" data-bs-weight="7 to 12 lbs / 3.17 to 5.44 kg" data-bs-colors="White" data-bs-hair="Combination of soft, dense, and curly hair" data-bs-desc="Obedient, gentle, and playful" data-bs-special="Needs regular grooming and dental hygine" data-bs-origin="France" data-bs-loc="Any" data-bs-life="14 yrs" data-size="sz3">
+                                                Bichon Frise
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="brazilian_terrier_v03" data-bs-height="13 to 15.5&quot; / 33 to 40 cm" data-bs-weight="15 to 22 lbs / 7 to 10 kg" data-bs-colors="Shades of black, brown, and white" data-bs-hair="Short, sleek, and fine" data-bs-desc="Courageous, alert, and obedient" data-bs-special="Needs consistent training" data-bs-origin="Brazil" data-bs-loc="Outdoors with plenty of walking space" data-bs-life="12-14 yrs" data-size="sz3">
+                                                Brazilian Terrier
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="cardigan_welsh_corgi_v01" data-bs-height="10.5 to 12.5&quot; / 26.67 to 31.75 cm" data-bs-weight="25 to 38 lbs / 11.33 to 17.23 kg" data-bs-colors="Shades of red, black, and white" data-bs-hair="Double coated; thick, smooth, waterproof top-coat, and soft, insulating under-coat" data-bs-desc="Eager-to-learn, courageous, and obedient" data-bs-special="Needs regular exercise and patience to train" data-bs-origin="Great Britain" data-bs-loc="Any" data-bs-life="12-14 yrs" data-size="sz3">
+                                                Cardigan Welsh Corgi
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="cavalier_king_charles_spaniel_1" data-bs-height="12 to 13&quot; / 30.48 to 33.02 cm" data-bs-weight="10 to 18 lbs / 4.53 to 8.16 kg" data-bs-colors="Shades of black, red, and brown" data-bs-hair="Silky, long or short" data-bs-desc="Playful, courageous, and friendly" data-bs-special="Needs regular brushing, susceptible to heart problems" data-bs-origin="Great Britain" data-bs-loc="Any" data-bs-life="9-14 yrs" data-size="sz3">
+                                                Cavalier King Charles Spaniel
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="cesky_terrier_v05" data-bs-height="10 to 14&quot; / 25.4 to 35.56 cm" data-bs-weight="12 to 26 lbs / 5.44 to 11.79 kg" data-bs-colors="Shades of blue and gray, or brown and yellow with white marks on head, chest, and belly" data-bs-hair="Thick and shiny" data-bs-desc="Calm, intelligent, and obedient" data-bs-special="Needs regular grooming" data-bs-origin="Czech Republic" data-bs-loc="Cooler, outdoor climates" data-bs-life="12-14 yrs" data-size="sz3">
+                                                Cesky Terrier
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="chinese-crested-dog" data-bs-height="11 to 13&quot; / 27.94 to 33.02 cm" data-bs-weight="5 to 12 lbs / 2.26 to 5.44 kg" data-bs-colors="Any" data-bs-hair="Hairless - Hair is only on head, feet, and tail tip;<br>Powderpuff - Soft, silky, and fine;" data-bs-desc="Alert, playful, and affectionate" data-bs-special="Hairless - Needs lotion to prevent dry skin and sunburn;<br>Powderpuff - Needs constant grooming, susceptible to skin, toenail, and teeth problems;" data-bs-origin="Mexico" data-bs-loc="City or apartments with moderate climates" data-bs-life="12-13 yrs" data-size="sz3">
+                                                Chinese Crested
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="coton_de_tulear_v02" data-bs-height="8.5 to 12.5&quot; / 21.5 to 31.75 cm" data-bs-weight="7.5 to 15 lbs / 3.4 to 6.8 kg" data-bs-colors="White and yellow, or shades of beige, and gray" data-bs-hair="Long, wavy, and cottony" data-bs-desc="Spunky, clownish, and devoted" data-bs-special="Needs frequent brushing, and human companionship" data-bs-origin="Madagascar" data-bs-loc="Indoors in apartments" data-bs-life="12-18 yrs" data-size="sz3">
+                                                Coton de Tulear
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Medium-Small Dogs</h3>
+                                    <ul>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="Alpine-Dachsbracke-close-up" data-bs-height="13 to 16.5&quot; / 34 to 42 cm" data-bs-weight="33 to 40 lbs / 14.97 to 18.14 kg" data-bs-colors="Shades of red, and black, sometimes with white star on chest" data-bs-hair="Double coated; thick outer-coat, dense undercoat" data-bs-desc="Intelligent, hard-working, and courageous" data-bs-special="N/A" data-bs-origin="Austria" data-bs-loc="Colder, mountainous regions" data-bs-life="12 yrs" data-size="sz4">
+                                                Alpine Dachsbracke
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="american_eskimo_dog_v03" data-bs-height="15 to 19&quot; / 38.1 to 48.3 cm" data-bs-weight="18 to 35 lbs / 8.16 to 15.87 kg" data-bs-colors="Shades of white" data-bs-hair="Thick, soft double coat" data-bs-desc="Energetic, playful, and protective" data-bs-special="Needs regular brushing, can become destructive if not given enough attention, exists in smaller mini and toy varieties as well" data-bs-origin="USA" data-bs-loc="Any" data-bs-life="18-20 yrs" data-size="sz4">
+                                                American Eskimo Dog
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="american_staffordshire_terrier_v02" data-bs-height="16 to 19&quot; / 40.64 to 48.3 cm" data-bs-weight="37 to 50 lbs / 16.75 to 22.67 kg" data-bs-colors="Any" data-bs-hair="Short, hard, and glossy" data-bs-desc="Calm, playful, and strong-willed" data-bs-special="Not good with other dogs unless raised together" data-bs-origin="USA" data-bs-loc="City or country" data-bs-life="12 yrs" data-size="sz4">
+                                                American Staffordshire Terrier
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="basenji_v03" data-bs-height="16 to 17&quot; / 40.64 to 43.18 cm" data-bs-weight="21 to 24 lbs / 9.52 to 10.8 kg" data-bs-colors="Shades of red, black, and white. Less white than other colors" data-bs-hair="Short, silky, and fine" data-bs-desc="Mischievous, protective, and independent" data-bs-special="Fence needed as it has a tendency to wander, prone to getting overweight" data-bs-origin="Republic of the Congo" data-bs-loc="Any" data-bs-life="10-14 yrs" data-size="sz4">
+                                                Basenji
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="beagle_id91_03" data-bs-height="13 to 16&quot; / 33.02 to 40.64 cm" data-bs-weight="17 to 30 lbs / 7.71 to 13.6 kg" data-bs-colors="Tri-color; Black, white, and tan, or reddish-brown, lemon, and white" data-bs-hair="Short, hard, and smooth" data-bs-desc="Gentle, courageous, and sociable" data-bs-special="Tends to shed, needs regular exercise" data-bs-origin="Great Britain" data-bs-loc="Any" data-bs-life="12-15 yrs" data-size="sz4">
+                                                Beagle
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="bedlington_terrier_v04" data-bs-height="15 to 16.5&quot; / 38.1 to 41.91 cm" data-bs-weight="17 to 23 lbs / 7.71 to 10.4 kg" data-bs-colors="Shades of brown, blue, and white" data-bs-hair="Moderately short, silky, and slightly curly" data-bs-desc="Assertive, playful, and curious" data-bs-special="Needs daily grooming, exercise, and mental stimulation" data-bs-origin="Great Britain" data-bs-loc="Indoors, city life" data-bs-life="14-15 yrs" data-size="sz4">
+                                                Bedlington Terrier
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="chinese_sharpei_v02" data-bs-height="18 to 20&quot; / 45.72 to 50.8 cm" data-bs-weight="40 to 60 lbs / 18.14 to 24.9 kg" data-bs-colors="Any solid color" data-bs-hair="Horsecoat - Short, stiff, and harsh;<br>Brushcoat - Slightly longer;<br>Bearcoat - Long, soft, and cottony" data-bs-desc="Dignified, friendly, and aloof with strangers" data-bs-special="Needs regular brushing, consistent training, and exercise" data-bs-origin="China" data-bs-loc="Cooler climates" data-bs-life="11-12 yrs" data-size="sz4">
+                                                Chinese Shar-Pei  
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Medium Dogs</h3>
+                                    <ul>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="american_pitbull_terrier_v02" data-bs-height="18 to 22&quot; / 45.72 to 55.9 cm" data-bs-weight="30 to 80 lbs / 13.6 to 36.3 kg" data-bs-colors="Any" data-bs-hair="Short" data-bs-desc="Sensitive, gentle, and loving" data-bs-special="Needs strict training, not good with other dogs unless raised together" data-bs-origin="USA" data-bs-loc="Any" data-bs-life="12 yrs" data-size="sz5">
+                                                American Pitbull Terrier
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="barbet" data-bs-height="18 to 23.5&quot; / 45.72 to 60 cm" data-bs-weight="33 to 55 lbs / 15 to 25 kg" data-bs-colors="Shades of black, white, gray, or brown" data-bs-hair="Woolly, soft, and wavy" data-bs-desc="Docile, lively, and eager-to-please" data-bs-special="Needs regular grooming and training" data-bs-origin="France" data-bs-loc="Outdoors, wide, open spaces" data-bs-life="12-14 yrs" data-size="sz5">
+                                                Barbet
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="bearded_collie_57b" data-bs-height="20 to 22&quot; / 50.8 to 55.9 cm" data-bs-weight="40 to 60 lbs / 18.14 to 27.2 kg" data-bs-colors="Shades of black, gray, and brown" data-bs-hair="Double coated; flat, strong, and shaggy outercoat, and furry, soft, and close undercoat" data-bs-desc="Exuberant, intelligent, and playful" data-bs-special="Needs regular grooming and exercise, requires frequent physical and mental stimulation" data-bs-origin="Great Britain" data-bs-loc="Cold, city climates" data-bs-life="12-13 yrs" data-size="sz5">
+                                                Bearded Collie
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="canaan-dog-5-645mk07-111" data-bs-height="19 to 24&quot; / 48.3 to 61 cm" data-bs-weight="35 to 55 lbs / 15.87 to 24.9 kg" data-bs-colors="Shades of brown, white (usually with a black mask), or black" data-bs-hair="Double coated; short, straight, and harsh outercoat with soft undercoat" data-bs-desc="Defensive, curious, and aloof with strangers" data-bs-special="Needs firm but kind discipline early" data-bs-origin="Israel" data-bs-loc="Any" data-bs-life="12-13 yrs" data-size="sz5">
+                                                Canaan Dog
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="Catalan3" data-bs-height="17.5 to 21.5&quot; / 45 to 55 cm" data-bs-weight="35 to 40 lbs / 15.88 to 18.14 kg" data-bs-colors="Shades of brown, black, and tan" data-bs-hair="Dense, flat, and rough" data-bs-desc="Courageous, energetic, and vigilant" data-bs-special="needs regular exercise, brushing, and stimulation" data-bs-origin="Spain" data-bs-loc="Wide open spaces" data-bs-life="12-14 yrs" data-size="sz5">
+                                                Catalonian Sheepdog
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Medium-Large Dogs</h3>
+                                    <ul>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="airedale_f" data-bs-height="22 to 24&quot; / 55.9 to 61 cm" data-bs-weight="44 to 50 lbs / 19.5 to 22.67 kg" data-bs-colors="Tan with black markings with or without white marking on chest, black grizzle" data-bs-hair="Dense, wiry, and close-lying" data-bs-desc="Energetic, inquisitive, and dignified" data-bs-special="Groom often, give plenty of exercise and attention" data-bs-origin="Great Britain" data-bs-loc="City or country" data-bs-life="13 yrs" data-size="sz6">
+                                                Airedale Terrier
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="aidi_v04" data-bs-height="20.5 to 24.5&quot; / 52 to 62 cm" data-bs-weight="50 to 55 lbs / 22.68 to 24.95 kg" data-bs-colors="Shades of fawn, brown, or black" data-bs-hair="Thick, bushy, and harsh" data-bs-desc="Protective, energetic, and curious" data-bs-special="Needs to be kept occupied" data-bs-origin="Morocco" data-bs-loc="Outdoor, mountainous regions with harsh temperatures" data-bs-life="10-11 yrs" data-size="sz6">
+                                                Aidi
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="alapaha" data-bs-height="20 to 25&quot; / 50.8 to 63.5 cm" data-bs-weight="65 to 110 lbs / 29.48 to 49.89 kg" data-bs-colors="Shades of gray, black, and brown" data-bs-hair="Short, stiff uppercoat, and a soft undercoat" data-bs-desc="Aggressive to strangers and other animals" data-bs-special="Needs a lot of training, prefers staying indoors with family" data-bs-origin="USA" data-bs-loc="Large estates" data-bs-life="11-13 yrs" data-size="sz6">
+                                                Alapaha Blue Blood Bulldog
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="alaskan_malamute_v02" data-bs-height="21 to 28&quot; / 53.3 to 71.1 cm" data-bs-weight="64 to 125 lbs / 29 to 56.69 kg" data-bs-colors="All white, or shades of gray, black, and red, with white underbody" data-bs-hair="Double coated; coarse outer-coat, soft and woolly undercoat" data-bs-desc="Dignified, playful, and sociable" data-bs-special="Needs regular brushing, exercise, and attention" data-bs-origin="USA" data-bs-loc="Colder, outdoor climates" data-bs-life="12 yrs" data-size="sz6">
+                                                Alaskan Malamute
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="american_bulldog_v03" data-bs-height="20 to 27&quot; / 50.8 to 68.58 cm" data-bs-weight="60 to 125 lbs / 27.2 to 56.7 kg" data-bs-colors="All white, or shades of red, and brown" data-bs-hair="Short, stiff, and close-lying" data-bs-desc="Courageous, lively, and aloof with strangers" data-bs-special="Needs patience to train and exercise" data-bs-origin="USA" data-bs-loc="Any" data-bs-life="11-12 yrs" data-size="sz6">
+                                                American Bulldog
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="american_foxhound_v03" data-bs-height="21 to 25&quot; / 53.34 to 63.5 cm" data-bs-weight="65 to 75 lbs / 29.5 to 34 kg" data-bs-colors="Any" data-bs-hair="Hard, short, and glossy" data-bs-desc="Likes to be around other dogs" data-bs-special="Needs lots of exercise and the company of other dogs" data-bs-origin="USA" data-bs-loc="Outdoors, country life" data-bs-life="11-13 yrs" data-size="sz6">
+                                                American Foxhound
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="belgian_sheepdog_v01" data-bs-height="22 to 26&quot; / 56 to 66 cm" data-bs-weight="44 to 66 lbs / 20 to 30 kg" data-bs-colors="Black, sometimes with small amount of white on foorehead and toes" data-bs-hair="Long, straight, and dense" data-bs-desc="Courageous, energetic, and alert" data-bs-special="High fence needed, brush several times a week, and needs a lot of exercise" data-bs-origin="Belgium" data-bs-loc="Anywhere with lots of space to run" data-bs-life="12-14 yrs" data-size="sz6">
+                                                Belgian Sheepdog
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="bergamasco_v03" data-bs-height="21 to 25&quot; / 53.5 to 63.5 cm" data-bs-weight="65 to 85 lbs / 29.7 to 38.6 kg" data-bs-colors="Shades of black, gray, and brown" data-bs-hair="Triple coated; woolly, felt-like, and corded loose mats" data-bs-desc="Cautious, eager-to-work, and short attention span" data-bs-special="Lots of grooming and exercise required" data-bs-origin="Italy" data-bs-loc="Outdoor, country life in cooler climates" data-bs-life="11-15 yrs" data-size="sz6">
+                                                Bergamasco
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="bernese_mountain_dog_v05" data-bs-height="22 to 27.5&quot; / 55.9 to 69.9 cm" data-bs-weight="87 to 90 lbs / 39.5 to 40.8 kg" data-bs-colors="Shades of black or brown, with white markings on face and chest" data-bs-hair="Thick, glossy, and soft" data-bs-desc="Obedient, energetic, and self-confident" data-bs-special="Needs regular brushing and moderate exercise, as well as large amounts of food, and protect from heat" data-bs-origin="Switzerland" data-bs-loc="Cooler, outdoor climates" data-bs-life="8-9 yrs in recent years due to high incidence of cancer" data-size="sz6">
+                                                Bernese Mountain Dog
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="billy" data-bs-height="21 to 27.5&quot; / 53.34 to 69.85 cm" data-bs-weight="55 to 73 lbs / 24.94 to 33.11 kg" data-bs-colors="Shades of white, brown, yellow, and orange" data-bs-hair="Thin, short, stiff, and glossy" data-bs-desc="Intelligent, obedient, and courageous" data-bs-special="Avoid cold climates and exercise often" data-bs-origin="France" data-bs-loc="Warm, country climates" data-bs-life="12-13 yrs" data-size="sz6">
+                                                Billy
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="black_russian_terrier_01" data-bs-height="26 to 30&quot; / 66 to 76.2 cm" data-bs-weight="88 to 144 lbs / 39.9 to 65.31 kg" data-bs-colors="Black, sometimes with a few ashen-gray hairs" data-bs-hair="Thick, tousled, and slightly wavy " data-bs-desc="Confident, adaptable, and calm" data-bs-special="Needs frequent brushing" data-bs-origin="Russia" data-bs-loc="Any" data-bs-life="10-11 yrs" data-size="sz6">
+                                                Black Russian Terrier
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="CAshepherd" data-bs-height="> 27.56&quot; / > 70 cm" data-bs-weight="80 to 110 lbs / 36.29 to 49.9 kg" data-bs-colors="Shades of white, black, gray, red, or brown" data-bs-hair="Thick, wooly, and rough" data-bs-desc="Independent, courageous, and protective" data-bs-special="Requires extensive socialization and needs patience to train, needs tall fences" data-bs-origin="Russia" data-bs-loc="Cold, country locations" data-bs-life="11-14 yrs" data-size="sz6">
+                                                Central Asian Shepherd
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="chesapeake_bay_retriever_v" data-bs-height="21 to 26&quot; / 53.3 to 66 cm" data-bs-weight="55 to 80 lbs / 24.9 to 36.3 kg" data-bs-colors="Shades of brown and red" data-bs-hair="Double cooated; short, thick, and harsh topcoat, and wooly undercoat" data-bs-desc="Courageous, bright, and eager-to-please" data-bs-special="Needs daily brushing, exercise, training, and human companionship" data-bs-origin="USA" data-bs-loc="Any" data-bs-life="12-13 yrs" data-size="sz6">
+                                                Chesapeake Bay Retriever  
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Large Dogs</h3>
+                                    <ul>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="afghan_hound_v07" data-bs-height="24 to 28&quot; / 61 to 71.1 cm" data-bs-weight="44 to 66 lbs / 19.95 to 29.9 kg" data-bs-colors="Any" data-bs-hair="Long, fine, and glossy" data-bs-desc="Gentle, proud, and playful" data-bs-special="Vigorous grooming to prevent matting, needs lots of exercise, patience, attention, and early discipline" data-bs-origin="Egypt" data-bs-loc="Hilly terrain, open spaces" data-bs-life="12-14 yrs" data-size="sz7">
+                                                Afghan
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="beauceron_v03" data-bs-height="24 to 28&quot; / 61 to 71.1 cm" data-bs-weight="66 to 85 lbs / 29.9 to 38.6 kg" data-bs-colors="Shades of black, brown, and gray" data-bs-hair="Coarse, straight, and tough" data-bs-desc="Obedient, possesive, and energetic" data-bs-special="Needs a lot of training and exercise" data-bs-origin="France" data-bs-loc="Wide open, country locations" data-bs-life="11-13 yrs" data-size="sz7">
+                                                Beauceron
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="borzoi_v05" data-bs-height="26 to 32&quot; / 66.04 to 81.3 cm" data-bs-weight="55 to 105 lbs / 24.9 to 47.4 kg" data-bs-colors="Any" data-bs-hair="Long, and silky" data-bs-desc="Quiet, aristocratic, and aloof" data-bs-special="Needs daily brushing, trimming, vigorous exercise, and tall fence" data-bs-origin="Russia" data-bs-loc="Any" data-bs-life="11-13 yrs" data-size="sz7">
+                                                Borzoi
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="cane_corso_v_04" data-bs-height="22 to 28&quot; / 55.9 to 71.1 cm" data-bs-weight="80 to 140 lbs / 36.3 to 63.5 kg" data-bs-colors="Shades of black, red, and brown" data-bs-hair="Short and dense" data-bs-desc="Courageous, intelligent, and aloof with strangers" data-bs-special="Needs firm and patient early training" data-bs-origin="Italy" data-bs-loc="Any" data-bs-life="10-15 yrs" data-size="sz7">
+                                                Cane Corso
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="caucasian_ovtcharka_v04" data-bs-height="24.5 to 27&quot; / 62.23 to 68.5 cm" data-bs-weight="99 to 154 lbs / 44.9 to 69.85 kg" data-bs-colors="Any, usually shades of yellow, white and red" data-bs-hair="Thick, double coated, of varying length" data-bs-desc="Courageous, vigilant, and headstrong" data-bs-special="Needs careful socialization and consistent, patient training" data-bs-origin="Russia" data-bs-loc="Cooler, outdoor climates" data-bs-life="10-11 yrs" data-size="sz7">
+                                                Caucasian Ovtcharka
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="czechoslovakian_wolfdog_v03" data-bs-height="24 to 25&quot; / 60 to 65 cm" data-bs-weight="44 to 57 lbs / 20 to 26 kg" data-bs-colors="Shades of yellow, gray, and silver" data-bs-hair="Straight and close;<br>Undercoat thickness varies with season" data-bs-desc="Courageous, energetic, and difficult to train" data-bs-special="Needs patient and thoughtful stimulation when training" data-bs-origin="Czechoslovakia" data-bs-loc="Country life" data-bs-life="12-16 yrs" data-size="sz7">
+                                                Czechoslovakian Wolfdog
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Giant Dogs</h3>
+                                    <ul>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="akbash" data-bs-height="28 to 34&quot; / 71.12 to 86.36 cm" data-bs-weight="90 to 120 lbs / 40.82 to 54.43 kg" data-bs-colors="Shades of white, and gray" data-bs-hair="Double coated; Long and coarse outer-coat, soft and fine undercoat" data-bs-desc="Courageous, independent, and aloof to strangers" data-bs-special="Sheds anually, needs patience to train" data-bs-origin="Turkey" data-bs-loc="Outdoor, country regions" data-bs-life="10-11 yrs" data-size="sz8">
+                                                Akbash Dog
+                                            </a>
+                                        </li>
+                                        <li class="selection">
+                                            <a href="#detailsModal" role="button" data-bs-toggle="modal" data-bs-img="anatolian_shepherd" data-bs-height="28 to 32&quot; / 71 to 81 cm" data-bs-weight="90 to 150 lbs / 40.8 to 68.03 kg" data-bs-colors="Any" data-bs-hair="Short, rough, and dense" data-bs-desc="Independent, protective, and intelligent" data-bs-special="Needs a lot of food, and to be kept busy with work and exercise" data-bs-origin="Turkey" data-bs-loc="Outdoors, cooler, country climates" data-bs-life="10-11 yrs" data-size="sz8">
+                                                Anatolian Shepherd Dog
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Size images -->
+                        <div class="col-lg-3 px-5 d-none d-lg-block">
+                            <table class="table table-responsive text-center">
+                                <tr>
+                                    <td>
+                                        <figure class="figure">
+                                            <img src="Sizes\sz1_transparent.webp" alt="Miniscule" class="figure-img img-fluid">
+                                            <figcaption class="figure-caption">Miniscule Dogs</figcaption>
+                                        </figure>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <figure class="figure">
+                                            <img src="Sizes\sz2_transparent.webp" alt="Tiny" class="figure-img img-fluid">
+                                            <figcaption class="figure-caption">Tiny Dogs</figcaption>
+                                        </figure>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <figure class="figure">
+                                            <img src="Sizes\sz3_transparent.webp" alt="Small" class="figure-img img-fluid">
+                                            <figcaption class="figure-caption">Small Dogs</figcaption>
+                                        </figure>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <figure class="figure">
+                                            <img src="Sizes\sz4_transparent.webp" alt="Medium-Small" class="figure-img img-fluid">
+                                            <figcaption class="figure-caption">Medium-Small Dogs</figcaption>
+                                        </figure>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <figure class="figure">
+                                            <img src="Sizes\sz5_transparent.webp" alt="Medium" class="figure-img img-fluid">
+                                            <figcaption class="figure-caption">Medium Dogs</figcaption>
+                                        </figure>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <figure class="figure">
+                                            <img src="Sizes\sz6_transparent.webp" alt="Medium-Large" class="figure-img img-fluid">
+                                            <figcaption class="figure-caption">Medium-Large Dogs</figcaption>
+                                        </figure>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <figure class="figure">
+                                            <img src="Sizes\sz7_transparent.webp" alt="Large" class="figure-img img-fluid">
+                                            <figcaption class="figure-caption">Large Dogs</figcaption>
+                                        </figure>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <figure class="figure">
+                                            <img src="Sizes\sz8_transparent.webp" alt="Giant" class="figure-img img-fluid">
+                                            <figcaption class="figure-caption">Giant Dogs</figcaption>
+                                        </figure>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    <!-- Right/Bottom Ads -->
+                        <div class="col-lg-2" style="text-align: center;">
+                            <div id="r-ads-vert" class="d-none d-lg-block">
+                                <img src="Ads/vertical_1.jpg" alt="ADVERTISEMENT" class="vert-ads">
+                            </div>
+                            <div id="r-ads-horz" class="d-lg-none">
+                                <img src="Ads/epi-otic-ear-cleaner-banner-958x236.jpg" alt="ADVERTISEMENT" class="horz-ads">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="container-fluid mt-5">
+                <div class="footer-wrap">
+                    Created by Abdul Ahad for CPISM 2021 E-Project.
+                </div>
+            </footer>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="JS Files/dog-modal.js"></script>
+    </body>
+</html>
